@@ -158,20 +158,20 @@ footer { text-align:center; color:#c3dbdb; font-size:.8rem; margin-top:30px; }
 
 <div class="top-bar">
   <div class="round-display" id="roundDisplay">라운드 1/10</div>
-  <div class="score-display" id="scoreDisplay">1번: 0점 | 2번: 0점</div>
+  <div class="score-display" id="scoreDisplay">1팀: 0점 | 2팀: 0점</div>
 </div>
 
 <div id="finalArea"></div>
 
 <div class="battle-container" id="battleContainer">
   <div class="player-panel" id="panel1">
-    <div class="player-name">1번 <span class="turn-badge" id="turnBadge1"></span></div>
+    <div class="player-name">1팀 <span class="turn-badge" id="turnBadge1"></span></div>
     <div class="hint-text" id="hint1"></div>
     <div class="sentence-area" id="sentence1"></div>
     <div class="player-result" id="result1"></div>
   </div>
   <div class="player-panel" id="panel2">
-    <div class="player-name">2번 <span class="turn-badge" id="turnBadge2"></span></div>
+    <div class="player-name">2팀 <span class="turn-badge" id="turnBadge2"></span></div>
     <div class="hint-text" id="hint2"></div>
     <div class="sentence-area" id="sentence2"></div>
     <div class="player-result" id="result2"></div>
@@ -377,7 +377,7 @@ function startRound() {
 }
 
 function updateScoreDisplay() {
-  document.getElementById('scoreDisplay').textContent = `1번: ${p1Score}점 | 2번: ${p2Score}점`;
+  document.getElementById('scoreDisplay').textContent = `1팀: ${p1Score}점 | 2팀: ${p2Score}점`;
 }
 
 function renderAll() {
@@ -492,9 +492,9 @@ function nextRound() {
 }
 
 function showFinalScore() {
-  const winner = p1Score > p2Score ? '1번 승리! 🏆' : p2Score > p1Score ? '2번 승리! 🏆' : '무승부! 🤝';
+  const winner = p1Score > p2Score ? '1팀 승리! 🏆' : p2Score > p1Score ? '2팀 승리! 🏆' : '무승부! 🤝';
   document.getElementById('finalArea').innerHTML =
-    `<div class="final-alert">🎊 게임 종료 🎊<br>${winner}<br>1번: ${p1Score}점 | 2번: ${p2Score}점</div>`;
+    `<div class="final-alert">🎊 게임 종료 🎊<br>${winner}<br>1팀: ${p1Score}점 | 2팀: ${p2Score}점</div>`;
   document.getElementById('battleContainer').style.display = 'none';
   document.getElementById('controlSection').innerHTML = `
     <button class="action-btn" onclick="restartGame()">🔄 새 게임</button>
