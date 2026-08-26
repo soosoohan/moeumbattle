@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=en">
+<html lang="en">
 <head>
 <script>
   if (window.top !== window.self) {
@@ -7,9 +7,8 @@
   }
   console.log("© 2025-2026 Soosooland by 한수수. All rights reserved.");
   console.log("https://soosooland.com");
-  console.log("🎮 Moeum Quiz | Born: 2025-06-21");
+  console.log("🎮 Doori Moeum | Born: 2025-08-01");
 </script>
-
 <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
     <script>
@@ -20,74 +19,72 @@
     </script>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Moeum Quiz - Korean Vowel Puzzle Game | Soosooland</title>
-
-<!-- SEO Meta Tags -->
-
-<meta name="description" content="Guess Korean consonants with vowels revealed. Korean word puzzle. Free online.">
-<meta name="keywords" content="모음 퀴즈, 수수랜드, 초성 퀴즈, hangman, 행맨, moeum quiz, korean puzzle, vowel game, hangul game, korean learning, word puzzle, language game">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Doori Moeum - Two Player Korean hangman | Soosooland</title>
+    
+    <!-- SEO Meta Tags -->
+<meta name="description" content="Two player Korean vowel guessing game">
+<meta name="keywords" content="수수랜드, 초성 퀴즈, 모음 퀴즈, 행맨, hangman, korean hangman, multiplayer puzzle, hangul quiz, korean word game">
 <meta name="author" content="Soosooland">
 
-<!-- Open Graph -->
-
-<meta property="og:title" content="Moeum Quiz - Korean Vowel Puzzle Game">
-<meta property="og:description" content="Guess hidden consonants with only vowels revealed. Fun Korean word puzzle game.">
+    <!-- Open Graph -->
+<meta property="og:title" content="Doori Moeum - Two player Korean vowel guessing game">
+<meta property="og:description" content="Two player Korean vowel guessing game">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://soosooland.com/moeum-quiz/">
+<meta property="og:url" content="https://soosooland.com/doori/">
 <meta property="og:image" content="https://soosooland.com/images/moeum.jpeg">
 <meta property="og:site_name" content="Soosooland">
-<link rel="canonical" href="https://soosooland.com/moeum-quiz/">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Doori Moeum - Two player Korean vowel guessing game">
+<meta name="twitter:description" content="Two player Korean vowel guessing game">
+<meta name="twitter:image" content="https://soosooland.com/images/moeum.jpeg">
+  
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<link rel="canonical" href="https://soosooland.com/doori/">
+<link rel="alternate" hreflang="en" href="https://soosooland.com/doori/">
+<link rel="alternate" hreflang="ko" href="https://soosooland.com/doori/">
+<link rel="alternate" hreflang="x-default" href="https://soosooland.com/doori/">
 <link rel="stylesheet" href="https://soosooland.com/css/protection.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "VideoGame",
-  "name": "Moeum Quiz",
-  "description": "Korean vowel puzzle game where players guess hidden consonants to complete sentences",
-  "url": "https://soosooland.com/moeum-quiz/",
+  "name": "Doori Moeum",
+  "description": "Two player Korean vowel guessing game",
+  "url": "https://soosooland.com/doori/",
   "genre": "Puzzle",
   "gamePlatform": "Web browser",
-  "playMode": "SinglePlayer",
-  "inLanguage": ["ko"]
+  "playMode": "MultiPlayer",
+  "numberOfPlayers": 2,
+  "inLanguage": ["en", "ko"]
 }
 </script>
 <script src="https://soosooland.com/js/protection.js"></script>
 <style>
   * {
-      box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #145454;
+  body {
+      font-family: Arial, sans-serif; 
+      background: #145454;   
       text-align: center;
       padding: 30px;
       margin: 0;
     }
-
-  h1 { font-size: 3em; margin-bottom:0; color: #EF0; }
-  h2 { font-size:1.2em; color: #EF0; }
-
-   
-  header > div {
-    color:#fff;
-    line-height: 140%;
-    margin:30px auto;
-  }
-
-    header {
-      min-height: 380px;
-      margin-bottom: 40px;
-    }
- .language-toggle {
+   .language-toggle {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 12px;
+        right: 12px;
         background: rgba(255,255,255,0.9);
-        padding: 8px;
+        padding: 2px;
         border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         z-index: 100;
     }
 
@@ -111,9 +108,18 @@
     .language-button.active {
         background: #ff69b4;
     }
+    .back-button { position: fixed;  top: max(48px, env(safe-area-inset-top) + 20px);  left: 22px;  width: 44px; height: 44px; padding: 0; background: transparent; order: none; border-radius: 22%; cursor: pointer; z-index: 100; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 
+    .back-button img {width: 100%;height: 100%;object-fit: cover;display: block;}
+
+    .back-button:active {transform: scale(0.92);transition: transform 0.1s;}
+
+  h1 { font-size: 1.5em; margin-bottom:0;color: #b4f0f0; }
+  h2 { font-size:1.2em; color: white; }
+
+    
     h1 {
-      font-size: 3em;
+      font-size: 1.5em;
       margin-bottom: 0;
       color: #EF0;;
     }
@@ -121,11 +127,12 @@
     h2 {
       font-size: 1.2em;
       color: white;
+      text-align: left;
     }
 
     .game_container {
       background-color: #0E756D;
-      color: white;
+      color: #fff;
       width: 90%;
       max-width:800px;      
       margin: auto;
@@ -166,36 +173,16 @@
       background-color: #1baf8f;
       color: #fff;
     }
-
-  .back-button {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        padding: 10px 20px;
-        font-size: 1em;
-        background-color: #FFD6BA;
-        color: #7A2E2E;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 100;
-    }
-
-    .back-button:hover {
-        background-color: #FF9494;
-        color: white;
-    }
     footer {
 text-align: center;
-color: #c3dbdb;
+color: #d1cbcb;
 font-size: 0.8rem;
 margin-top: 30px;
 }
 
     .hidden {
-        display: none;
-    }
+    display: none;
+}
 
     /* 반응형 레이아웃 */
     @media (min-width: 800px) {
@@ -213,21 +200,7 @@ margin-top: 30px;
     }
 
     @media (max-width: 499px) {
-      @media (max-width: 480px) {
-    
-.language-toggle {
-        top: 10px;
-        right: 10px;
-        padding: 6px;
-        max-width: 150px; /* 최대 너비 제한 */
-    }
-    
-    .language-button {
-        padding: 5px 8px;
-        font-size: 0.85rem;
-        white-space: nowrap; /* 텍스트 줄바꿈 방지 */
-    }
-     .game-buttons button {
+      .game-buttons button {
         flex: 0 0 calc(100% - 20px); /* 1줄 */
         max-width: 280px;
       }
@@ -235,14 +208,20 @@ margin-top: 30px;
       .game_container {
         width: 95%;
       }
-    }
+      .back-button { top: max(30px, env(safe-area-inset-top) + 10px); left: 10px;  width: 40px; height: 40px; }
+      }
+
 </style>
 </head>
 <body onload="initLanguage()">
-    <button class="back-button" onclick="location.href='https://soosooland.com/'">
-    Soosooland </button>
+    <button class="back-button" onclick="location.href='https://soosooland.com/'" aria-label="수수랜드 홈으로">
+    <img src="https://soosooland.com/images/home.png" alt="수수랜드 홈"></button>
+    <div class="language-toggle">
+       <button class="language-button active" onclick="toggleLanguage('ko')">한</button>
+       <button class="language-button" onclick="toggleLanguage('en')">EN</button>
+    </div>  
     <div class="blackboard">
-  <div class="language-toggle">
+   <div class="language-toggle">
                 <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
                 <button class="language-button" onclick="toggleLanguage('en')">English</button>
             </div>
