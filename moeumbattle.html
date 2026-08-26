@@ -71,7 +71,17 @@ body {
   text-align:center; font-weight:bold; color:#4A628A; font-size:1.1em; margin-bottom:8px;
 }
 .turn-badge {
-  display:inline-block; margin-left:6px; font-size:0.85em; color:#e386c7;
+  display:inline-block;
+  margin-left:6px;
+  font-size:1.4em;
+  font-weight:bold;
+  color:#e386c7;
+  animation: turnPulse 1s ease-in-out infinite;
+}
+
+@keyframes turnPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 .player-panel.done .player-name { color:#7AB2D3; }
 
@@ -372,8 +382,8 @@ function renderAll() {
 
   document.getElementById('panel1').classList.toggle('active-turn', !roundOver && currentTurn===1);
   document.getElementById('panel2').classList.toggle('active-turn', !roundOver && currentTurn===2);
-  document.getElementById('turnBadge1').textContent = (!roundOver && currentTurn===1) ? '← 차례' : '';
-  document.getElementById('turnBadge2').textContent = (!roundOver && currentTurn===2) ? '← 차례' : '';
+  document.getElementById('turnBadge1').textContent = (!roundOver && currentTurn===1) ? '← 지금 차례' : '';
+  document.getElementById('turnBadge2').textContent = (!roundOver && currentTurn===2) ? '← 지금 차례' : '';
 }
 
 function createConsonantButtons() {
