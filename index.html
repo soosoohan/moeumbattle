@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang=en">
+<head>
+<script>
+  if (window.top !== window.self) {
+    window.top.location = "https://soosooland.com";
+  }
+  console.log("© 2025-2026 Soosooland by 한수수. All rights reserved.");
+  console.log("https://soosooland.com");
+  console.log("🎮 Moeum Quiz | Born: 2025-06-21");
+</script>
+
+<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4YZHC1G9FN');
+    </script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Moeum Quiz - Korean Vowel Puzzle Game | Soosooland</title>
+
+<!-- SEO Meta Tags -->
+
+<meta name="description" content="Guess Korean consonants with vowels revealed. Korean word puzzle. Free online.">
+<meta name="keywords" content="모음 퀴즈, 수수랜드, 초성 퀴즈, hangman, 행맨, moeum quiz, korean puzzle, vowel game, hangul game, korean learning, word puzzle, language game">
+<meta name="author" content="Soosooland">
+
+<!-- Open Graph -->
+
+<meta property="og:title" content="Moeum Quiz - Korean Vowel Puzzle Game">
+<meta property="og:description" content="Guess hidden consonants with only vowels revealed. Fun Korean word puzzle game.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://soosooland.com/moeum-quiz/">
+<meta property="og:image" content="https://soosooland.com/images/moeum.jpeg">
+<meta property="og:site_name" content="Soosooland">
+<link rel="canonical" href="https://soosooland.com/moeum-quiz/">
+<link rel="stylesheet" href="https://soosooland.com/css/protection.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Moeum Quiz",
+  "description": "Korean vowel puzzle game where players guess hidden consonants to complete sentences",
+  "url": "https://soosooland.com/moeum-quiz/",
+  "genre": "Puzzle",
+  "gamePlatform": "Web browser",
+  "playMode": "SinglePlayer",
+  "inLanguage": ["ko"]
+}
+</script>
+<script src="https://soosooland.com/js/protection.js"></script>
+<style>
+  * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #145454;
+      text-align: center;
+      padding: 30px;
+      margin: 0;
+    }
+
+  h1 { font-size: 3em; margin-bottom:0; color: #EF0; }
+  h2 { font-size:1.2em; color: #EF0; }
+
+   
+  header > div {
+    color:#fff;
+    line-height: 140%;
+    margin:30px auto;
+  }
+
+    header {
+      min-height: 380px;
+      margin-bottom: 40px;
+    }
+ .language-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255,255,255,0.9);
+        padding: 8px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 100;
+    }
+
+    .language-button {
+        background: #2e8b8b;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        margin: 2px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Pretendard', sans-serif;
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        transition: all 0.3s ease;
+    }
+
+    .language-button:hover {
+        background: #20b2aa;
+    }
+
+    .language-button.active {
+        background: #ff69b4;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0;
+      color: #EF0;;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      color: white;
+    }
+
+    .game_container {
+      background-color: #0E756D;
+      color: white;
+      width: 90%;
+      max-width:800px;      
+      margin: auto;
+      padding: 20px;
+      border-radius: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .game-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .game-buttons button {
+      width: 200px;
+      height: 52px;
+      padding: 16px 0;
+      font-size: 1.1em;
+      cursor: pointer;
+      border: none;
+      background-color: #CFF9FF;
+      color: #0A6A79;
+      border-radius: 12px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 5px;
+    }
+
+    .game-buttons button:hover {
+      background-color: #1baf8f;
+      color: #fff;
+    }
+
+  .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: #FFD6BA;
+        color: #7A2E2E;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 100;
+    }
+
+    .back-button:hover {
+        background-color: #FF9494;
+        color: white;
+    }
+    footer {
+text-align: center;
+color: #c3dbdb;
+font-size: 0.8rem;
+margin-top: 30px;
+}
+
+    .hidden {
+        display: none;
+    }
+
+    /* 반응형 레이아웃 */
+    @media (min-width: 800px) {
+      .game-buttons button {
+        flex: 0 0 calc(33.333% - 20px); /* 3줄 */
+        max-width: 200px;
+      }
+    }
+
+    @media (max-width: 799px) and (min-width: 500px) {
+      .game-buttons button {
+        flex: 0 0 calc(50% - 20px); /* 2줄 */
+        max-width: 200px;
+      }
+    }
+
+    @media (max-width: 499px) {
+      @media (max-width: 480px) {
+    
+.language-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 6px;
+        max-width: 150px; /* 최대 너비 제한 */
+    }
+    
+    .language-button {
+        padding: 5px 8px;
+        font-size: 0.85rem;
+        white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    }
+     .game-buttons button {
+        flex: 0 0 calc(100% - 20px); /* 1줄 */
+        max-width: 280px;
+      }
+      
+      .game_container {
+        width: 95%;
+      }
+    }
+</style>
+</head>
+<body onload="initLanguage()">
+    <button class="back-button" onclick="location.href='https://soosooland.com/'">
+    Soosooland </button>
+    <div class="blackboard">
+  <div class="language-toggle">
+                <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
+                <button class="language-button" onclick="toggleLanguage('en')">English</button>
+            </div>
+        <div class="moeum-main" id="moeum-main">
+<div id="korean-description">
+            <h1 class="chalk-text main-title">모음 퀴즈</h1>
+  <h2>자음을 추리해서 단어, 구절, 문장을 완성하는 게임이에요.</h2>
+<p style="color: #a7fff0;">게임 방법<br>
+
+모음은 모두 공개된 상태에서 게임이 시작됩니다.<br>
+화면 아래 자음 버튼을 클릭해 해당 자음이 포함되어 있는지 추리합니다.<br>
+정답 자음은 해당 위치에 표시되고, 오답 자음은 시도 횟수가 차감됩니다.<br>
+6번의 기회 안에 정답을 맞추면 승리!<br>
+실패하면 정답이 공개됩니다.<br>
+위에 있는 버튼들은 쉽고, 아래로 내려갈수록 어려워집니다.<br>
+ 
+
+</div>
+
+<div id="english-description" class="hidden">
+            <h1 class="chalk-text main-title">Moeum Quiz</h1>
+  <h2>Korean Hangman</h2>  
+<p style="color: #a7fff0;">How to Play<br>
+The game starts with all vowels revealed.<br>
+Click the consonant buttons at the bottom to guess if the consonant is in the sentence.<br>
+Correct consonants are revealed in their positions, while incorrect guesses reduce your attempt count.<br>
+Solve the puzzle within 6 tries to win!
+If you fail, the correct sentence will be shown.<br>
+The buttons at the top are easier.</p>
+
+    
+ </div>
+
+            </div>
+
+    </div>       
+    </div></div>
+  <div class="game_container">
+      <div class="game-buttons">
+        <button onclick="playGame('word', '따뜻한 말')">따뜻한 말</button>
+        <button onclick="playGame('sokdam', '속담 명언')">속담 명언</button>
+        <button onclick="playGame('food', '음식')">🍽️ 음식</button>
+        <button onclick="playGame('dongmul', '동물')">🦁 동물</button>
+        <button onclick="playGame('riddles', '수수께끼')">❓ 수수께끼</button>
+        <button onclick="playGame('chostory', '초등 국사')">초등 국사</button>
+        <button onclick="playGame('world','대륙 나라 수도')">대륙 나라 수도</button>
+        <button onclick="playGame('sikmul', '동물이 아닌 생물')">동물이 아닌 생물</button>
+        <button onclick="playGame('jungstory', '중학교 국사')">중학교 국사</button>
+        <button onclick="playGame('korea', '한국 여행')">한국 여행</button>
+        <button onclick="playGame('saja', '사자성어')">사자성어</button>
+        <button onclick="playGame('book', '저자와 저서')">저자와 저서</button>
+        <button onclick="playGame('movie', '영화 드라마')">영화 드라마</button>
+        <button onclick="playGame('coffee', '커피와 원두')">커피와 원두</button>
+        <button onclick="playGame('law', '대한민국 헌법')">대한민국 헌법</button>
+        <button onclick="playGame('goyu','고유어')">📚 고유어</button>
+        <button onclick="playGame('proverb', '서양 속담')">서양 속담</button>
+      </div>
+  </div>
+    <footer>
+  <p>© 2025 Han Soosoo. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleLanguage(lang) {
+        const koreanDesc = document.getElementById('korean-description');
+        const englishDesc = document.getElementById('english-description');
+        const buttons = document.querySelectorAll('.language-button');
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        if (lang === 'ko') {
+            koreanDesc.classList.remove('hidden');
+            englishDesc.classList.add('hidden');
+            buttons[0].classList.add('active');
+        } else {
+            koreanDesc.classList.add('hidden');
+            englishDesc.classList.remove('hidden');
+            buttons[1].classList.add('active');
+        }
+
+localStorage.setItem('soosoo-lang', lang); 
+
+    }
+function initLanguage() {
+  const saved = localStorage.getItem('soosoo-lang');
+  if (saved) {
+    toggleLanguage(saved); // 저장된 값 우선
+  } else {
+    const lang = navigator.language.startsWith('ko') ? 'ko' : 'en';
+    toggleLanguage(lang); // 브라우저 언어 감지
+  }
+}
+function playGame(wordpool, title) {
+  // Vercel 게임 파일 주소
+  const gameUrl = 'https://soosoofile.vercel.app/moeum.html';
+  
+  // 워드풀 파일 주소
+  const wordpoolUrl = `https://soosooland.com/moeum-quiz/wordpools/${wordpool}.json`;
+  
+  // 제목이 있으면 title 파라미터 추가, 없으면 빈 문자열
+  const titleParam = title ? `&title=${encodeURIComponent(title)}` : '';
+  
+  // 게임 페이지로 이동
+  location.href = `${gameUrl}?wordpool=${encodeURIComponent(wordpoolUrl)}${titleParam}`;
+}
+</script>
+</body>
+</html>
