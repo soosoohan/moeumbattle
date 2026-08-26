@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script>
+  if (window.top !== window.self) {
+    window.top.location = "https://soosooland.com";
+  }
+  console.log("© 2025-2026 Soosooland by 한수수. All rights reserved.");
+  console.log("https://soosooland.com");
+  console.log("🎮 Moeum Battle | Born: 2026-08-26");
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4YZHC1G9FN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="robots" content="noindex, nofollow">
+<title>모음배틀</title>
+<link rel="stylesheet" href="https://soosooland.com/css/protection.css">
+<script src="https://soosooland.com/js/protection.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Malgun Gothic', sans-serif;
+  background: #145454;
+  min-height: 100vh;
+  padding: 20px;
+}
+.container { max-width: 900px; margin: 0 auto; }
+.header { text-align:center; margin-bottom: 20px; }
+.back-button { position: fixed; top: max(48px, env(safe-area-inset-top) + 20px); left: 22px; width:44px; height:44px; padding:0; font-size:1.8em; font-weight:bold; background:white; color:#145454; border-radius:12px; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .3s ease; z-index:100; }
+.title { font-size:1.8em; font-weight:bold; color:#b4f0f0; margin-bottom:6px; }
+
+.top-bar {
+  display:flex; justify-content:space-between; align-items:center;
+  background: rgba(255,255,255,0.9); border-radius:12px; padding:14px 20px;
+  margin-bottom:15px; flex-wrap:wrap; gap:10px;
+}
+.round-display { font-size:1.2em; font-weight:bold; color:#4A628A; }
+.score-display { font-size:1.2em; font-weight:bold; color:#e386c7; }
+
+.battle-container {
+  display:flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+@media (max-width: 700px) {
+  .battle-container { flex-direction: column; }
+}
+
+.player-panel {
+  flex: 1;
+  background: rgba(255,255,255,0.9);
+  border-radius: 12px;
+  padding: 18px;
+  border: 3px solid transparent;
+  transition: border-color .2s ease;
+}
+.player-panel.active-turn {
+  border-color: #FFD700;
+  box-shadow: 0 0 15px rgba(255,215,0,0.5);
+}
+.player-name {
+  text-align:center; font-weight:bold; color:#4A628A; font-size:1.1em; margin-bottom:8px;
+}
+.turn-badge {
+  display:inline-block; margin-left:6px; font-size:0.85em; color:#e386c7;
+}
+.player-panel.done .player-name { color:#7AB2D3; }
+
+.hint-text { text-align:center; color:#4A628A; font-weight:bold; margin-bottom:8px; font-size:1em; }
+
+.sentence-area {
+  font-size: 1.8em;
+  background: rgba(223,242,235,0.3);
+  padding: 12px;
+  border-radius: 8px;
+  min-height: 60px;
+  display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px;
+  line-height:1.2; word-break: keep-all;
+}
+.word-group { display:inline-flex; flex-wrap:nowrap; white-space:nowrap; align-items:center; margin-right:0.3em; }
+.word-group:last-child { margin-right:0; }
+.hangul-char { display:inline-block; min-width:1em; height:1.2em; text-align:center; vertical-align:baseline; }
+.incomplete-char { background: rgba(223,242,235,0.3); color:#4A628A; display:inline-flex; align-items:center; justify-content:center; min-width:1em; height:1.2em; }
+.complete-char { color:#4A628A; }
+
+.player-result {
+  text-align:center; margin-top:8px; font-weight:bold; font-size:1.1em; min-height: 1.3em;
+}
+.player-result.win { color:#4A628A; }
+.player-result.tie { color:#e386c7; }
+
+.consonant-section {
+  background: rgba(255,255,255,0.9);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+.consonant-title { text-align:center; font-weight:600; color:#4A628A; margin-bottom:15px; }
+.consonant-grid { display:grid; grid-template-columns: repeat(7,1fr); gap:10px; max-width:600px; margin:0 auto; }
+.consonant-btn {
+  width:100%; aspect-ratio:1; font-size:1.4em; font-weight:bold; border-radius:8px; border:2px solid; cursor:pointer; transition:all .2s;
+}
+.consonant-btn.available { background: linear-gradient(135deg,#B9E5E8,#DFF2EB); color:#4A628A; }
+.consonant-btn.available:hover { background: linear-gradient(135deg,#7AB2D3,#B9E5E8); color:white; transform:translateY(-2px); }
+.consonant-btn.used { background:#e0e0e0; color:#aaa; border-color:#ccc; cursor:not-allowed; }
+
+.control-section { text-align:center; }
+.action-btn {
+  background: linear-gradient(135deg,#7AB2D3,#4A628A); color:white; padding:12px 24px; border:none; border-radius:8px; cursor:pointer; font-size:1.05em; margin: 6px; transition:all .3s ease;
+}
+.action-btn:hover { background: linear-gradient(135deg,#4A628A,#7AB2D3); transform:translateY(-2px); }
+.action-btn.secondary { background: linear-gradient(135deg,#DFF2EB,#B9E5E8); color:#4A628A; }
+
+.final-alert {
+  background: linear-gradient(135deg,#B9E5E8,#DFF2EB); border:2px solid #7AB2D3; color:#4A628A;
+  padding:20px; border-radius:8px; font-size:1.3em; font-weight:bold; text-align:center; margin-bottom:15px;
+}
+
+footer { text-align:center; color:#c3dbdb; font-size:.8rem; margin-top:30px; }
+
+@media (max-width:480px) {
+  .back-button { top: max(30px, env(safe-area-inset-top) + 10px); left:10px; width:40px; height:40px; font-size:1.5em; }
+  .sentence-area { font-size:1.3em; }
+  .consonant-grid { grid-template-columns: repeat(5,1fr); }
+}
+</style>
+</head>
+<body>
+<button class="back-button" onclick="location.href='https://soosooland.com/doori/index.html'">←</button>
+<div class="container">
+
+<div class="header">
+  <h1 class="title" id="categoryTitle">모음 배틀</h1>
+</div>
+
+<div class="top-bar">
+  <div class="round-display" id="roundDisplay">라운드 1/10</div>
+  <div class="score-display" id="scoreDisplay">1번: 0점 | 2번: 0점</div>
+</div>
+
+<div id="finalArea"></div>
+
+<div class="battle-container" id="battleContainer">
+  <div class="player-panel" id="panel1">
+    <div class="player-name">1번 <span class="turn-badge" id="turnBadge1"></span></div>
+    <div class="hint-text" id="hint1"></div>
+    <div class="sentence-area" id="sentence1"></div>
+    <div class="player-result" id="result1"></div>
+  </div>
+  <div class="player-panel" id="panel2">
+    <div class="player-name">2번 <span class="turn-badge" id="turnBadge2"></span></div>
+    <div class="hint-text" id="hint2"></div>
+    <div class="sentence-area" id="sentence2"></div>
+    <div class="player-result" id="result2"></div>
+  </div>
+</div>
+
+<div class="consonant-section">
+  <div class="consonant-title">자음을 클릭하세요 (교대로 진행)</div>
+  <div class="consonant-grid" id="consonantGrid"></div>
+</div>
+
+<div class="control-section" id="controlSection"></div>
+
+</div>
+
+<footer><p>© 2025-2026 Han Soosoo. All rights reserved.</p></footer>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const wordpoolUrl = urlParams.get('wordpool');
+const categoryTitle = urlParams.get('title') || '모음 배틀';
+
+let sentences = [];
+let shuffledSentences = [];
+let sentenceIndex = 0;
+const consonants = ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+
+const totalRounds = 10;
+let currentRound = 1;
+let p1Score = 0, p2Score = 0;
+let usedConsonants = new Set();
+let currentTurn = 1;
+let roundOver = false;
+let showedAnswer = false;
+
+let players = {
+  1: { charStates: [], sentence:'', hint:'', complete:false },
+  2: { charStates: [], sentence:'', hint:'', complete:false }
+};
+
+// ---------- 워드풀 로딩 ----------
+async function loadWordpool() {
+  if (!wordpoolUrl) { alert('워드풀 주소가 지정되지 않았습니다.'); return false; }
+  try {
+    const response = await fetch(wordpoolUrl);
+    if (!response.ok) throw new Error('워드풀을 불러올 수 없습니다.');
+    const data = await response.json();
+    sentences = data.map(item => {
+      const result = {};
+      for (const key in item) {
+        result[key] = typeof item[key] === 'string'
+          ? item[key].replace(/[\u200B-\u200D\uFEFF\u00A0]/g, '').trim()
+          : item[key];
+      }
+      return result;
+    });
+    if (!Array.isArray(sentences) || sentences.length === 0) throw new Error('워드풀 형식이 올바르지 않습니다.');
+    return true;
+  } catch (error) {
+    alert('워드풀을 불러오는 중 오류가 발생했습니다: ' + error.message);
+    return false;
+  }
+}
+
+function shuffleSentences() {
+  shuffledSentences = [...sentences];
+  for (let i = shuffledSentences.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledSentences[i], shuffledSentences[j]] = [shuffledSentences[j], shuffledSentences[i]];
+  }
+  sentenceIndex = 0;
+}
+
+function getNextSentence() {
+  if (sentenceIndex >= shuffledSentences.length) shuffleSentences();
+  return shuffledSentences[sentenceIndex++];
+}
+
+// ---------- 한글 분해/조합 (기존 로직 재사용) ----------
+function containsConsonant(targetChar, consonant) {
+  const consonantMap = { 'ㄲ':'ㄱ','ㄸ':'ㄷ','ㅃ':'ㅂ','ㅆ':'ㅅ','ㅉ':'ㅈ' };
+  const complexConsonantMap = {
+    'ㄳ':['ㄱ','ㅅ'],'ㄵ':['ㄴ','ㅈ'],'ㄶ':['ㄴ','ㅎ'],'ㄺ':['ㄹ','ㄱ'],'ㄻ':['ㄹ','ㅁ'],
+    'ㄼ':['ㄹ','ㅂ'],'ㄽ':['ㄹ','ㅅ'],'ㄾ':['ㄹ','ㅌ'],'ㄿ':['ㄹ','ㅍ'],'ㅀ':['ㄹ','ㅎ'],'ㅄ':['ㅂ','ㅅ']
+  };
+  if (targetChar === consonant) return true;
+  if (consonantMap[targetChar] === consonant) return true;
+  if (complexConsonantMap[targetChar] && complexConsonantMap[targetChar].includes(consonant)) return true;
+  return false;
+}
+function getComplexConsonantComponents(consonant) {
+  const map = { 'ㄳ':['ㄱ','ㅅ'],'ㄵ':['ㄴ','ㅈ'],'ㄶ':['ㄴ','ㅎ'],'ㄺ':['ㄹ','ㄱ'],'ㄻ':['ㄹ','ㅁ'],
+    'ㄼ':['ㄹ','ㅂ'],'ㄽ':['ㄹ','ㅅ'],'ㄾ':['ㄹ','ㅌ'],'ㄿ':['ㄹ','ㅍ'],'ㅀ':['ㄹ','ㅎ'],'ㅄ':['ㅂ','ㅅ'] };
+  return map[consonant] || null;
+}
+function decomposeHangul(char) {
+  const code = char.charCodeAt(0) - 0xAC00;
+  if (code < 0 || code > 11171) return null;
+  const jong = code % 28;
+  const jung = (code - jong) / 28 % 21;
+  const cho = ((code - jong) / 28 - jung) / 21;
+  const choTable=['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+  const jungTable=['ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
+  const jongTable=['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+  return { cho:choTable[cho], jung:jungTable[jung], jong: jong===0?'':jongTable[jong] };
+}
+function composeHangul(cho, jung, jong='') {
+  const choTable=['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+  const jungTable=['ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
+  const jongTable=['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+  const ci=choTable.indexOf(cho), ji=jungTable.indexOf(jung), gi=jongTable.indexOf(jong);
+  if (ci===-1||ji===-1||gi===-1) return null;
+  return String.fromCharCode(0xAC00 + (ci*21+ji)*28+gi);
+}
+function isJongComplete(c) {
+  if (!c.jong) return true;
+  const doubleMap = { 'ㄲ':'ㄱ','ㅆ':'ㅅ' };
+  if (doubleMap[c.jong]) {
+    const base = doubleMap[c.jong];
+    return c.foundJongComponents.has(base) || c.foundJongComponents.has(c.jong);
+  }
+  const comp = getComplexConsonantComponents(c.jong);
+  if (!comp) return c.foundJongComponents.has(c.jong);
+  return comp.every(x => c.foundJongComponents.has(x));
+}
+function isCharComplete(c) { return c.choFound && isJongComplete(c); }
+
+function buildCharStates(text) {
+  const states = [];
+  for (let char of text) {
+    if (char === ' ') { states.push({ isSpace:true }); continue; }
+    const d = decomposeHangul(char);
+    if (!d) { states.push({ isNonHangul:true, char }); continue; }
+    states.push({ char, cho:d.cho, jung:d.jung, jong:d.jong, choFound:false, foundJongComponents:new Set(), isSpace:false, isNonHangul:false });
+  }
+  return states;
+}
+
+function getFoundJongDisplay(c) {
+  if (!c.jong) return '';
+  const doubleMap = { 'ㄲ':'ㄱ','ㅆ':'ㅅ' };
+  if (doubleMap[c.jong]) {
+    const base = doubleMap[c.jong];
+    return (c.foundJongComponents.has(base) || c.foundJongComponents.has(c.jong)) ? c.jong : '';
+  }
+  const comp = getComplexConsonantComponents(c.jong);
+  if (!comp) return c.foundJongComponents.has(c.jong) ? c.jong : '';
+  const found = comp.filter(x => c.foundJongComponents.has(x));
+  if (found.length === 0) return '';
+  return found.length === comp.length ? c.jong : found.join('');
+}
+
+function renderCharStates(charStates, revealAll) {
+  const words = []; let cur = [];
+  charStates.forEach(c => {
+    if (c.isSpace) { if (cur.length) { words.push(cur); cur=[]; } return; }
+    if (c.isNonHangul) { cur.push(`<span class="hangul-char complete-char">${c.char}</span>`); return; }
+    if (revealAll) {
+      cur.push(`<span class="hangul-char complete-char">${c.char}</span>`);
+      return;
+    }
+    const dispCho = c.choFound ? c.cho : '';
+    const dispJung = c.jung;
+    const dispJong = getFoundJongDisplay(c);
+    if (dispCho && dispJong) cur.push(`<span class="hangul-char complete-char">${composeHangul(dispCho,dispJung,dispJong)}</span>`);
+    else if (dispCho && !c.jong) cur.push(`<span class="hangul-char complete-char">${composeHangul(dispCho,dispJung)}</span>`);
+    else if (dispCho) cur.push(`<span class="hangul-char incomplete-char">${composeHangul(dispCho,dispJung)}</span>`);
+    else if (dispJong) cur.push(`<span class="hangul-char incomplete-char" style="position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:1em;height:1.2em;"><span style="font-size:.8em;">${dispJung}</span><span style="font-size:.7em;margin-top:-.1em;">${dispJong}</span></span>`);
+    else cur.push(`<span class="hangul-char incomplete-char">${dispJung}</span>`);
+  });
+  if (cur.length) words.push(cur);
+  return words.map(w => `<span class="word-group">${w.join('')}</span>`).join('');
+}
+
+// ---------- 라운드 진행 ----------
+function startRound() {
+  roundOver = false;
+  showedAnswer = false;
+  usedConsonants = new Set();
+
+  let s1 = getNextSentence();
+  let s2 = getNextSentence();
+  if (s2.text === s1.text && shuffledSentences.length > 1) s2 = getNextSentence();
+
+  players[1] = { charStates: buildCharStates(s1.text), sentence: s1.text, hint: s1.hint, complete:false };
+  players[2] = { charStates: buildCharStates(s2.text), sentence: s2.text, hint: s2.hint, complete:false };
+
+  currentTurn = (currentRound % 2 === 1) ? 1 : 2;
+
+  document.getElementById('roundDisplay').textContent = `라운드 ${currentRound}/${totalRounds}`;
+  document.getElementById('hint1').textContent = `💡 ${s1.hint}`;
+  document.getElementById('hint2').textContent = `💡 ${s2.hint}`;
+  document.getElementById('result1').textContent = '';
+  document.getElementById('result2').textContent = '';
+  document.getElementById('panel1').classList.remove('done');
+  document.getElementById('panel2').classList.remove('done');
+  document.getElementById('finalArea').innerHTML = '';
+  document.getElementById('controlSection').innerHTML = '';
+
+  updateScoreDisplay();
+  renderAll();
+  createConsonantButtons();
+}
+
+function updateScoreDisplay() {
+  document.getElementById('scoreDisplay').textContent = `1번: ${p1Score}점 | 2번: ${p2Score}점`;
+}
+
+function renderAll() {
+  document.getElementById('sentence1').innerHTML = renderCharStates(players[1].charStates, showedAnswer && !players[1].complete);
+  document.getElementById('sentence2').innerHTML = renderCharStates(players[2].charStates, showedAnswer && !players[2].complete);
+
+  document.getElementById('panel1').classList.toggle('active-turn', !roundOver && currentTurn===1);
+  document.getElementById('panel2').classList.toggle('active-turn', !roundOver && currentTurn===2);
+  document.getElementById('turnBadge1').textContent = (!roundOver && currentTurn===1) ? '← 차례' : '';
+  document.getElementById('turnBadge2').textContent = (!roundOver && currentTurn===2) ? '← 차례' : '';
+}
+
+function createConsonantButtons() {
+  const grid = document.getElementById('consonantGrid');
+  grid.innerHTML = '';
+  consonants.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'consonant-btn available';
+    btn.textContent = c;
+    btn.id = `btn-${c}`;
+    btn.onclick = () => handleConsonantClick(c);
+    grid.appendChild(btn);
+  });
+}
+
+function applyConsonantToPlayer(playerNum, consonant) {
+  const p = players[playerNum];
+  let found = false;
+  p.charStates.forEach(c => {
+    if (c.isSpace || c.isNonHangul) return;
+    if (!c.choFound && containsConsonant(c.cho, consonant)) { c.choFound = true; found = true; }
+    if (c.jong && containsConsonant(c.jong, consonant) && !c.foundJongComponents.has(consonant)) {
+      c.foundJongComponents.add(consonant);
+      found = true;
+    }
+  });
+  const allComplete = p.charStates.every(c => c.isSpace || c.isNonHangul || isCharComplete(c));
+  if (allComplete) p.complete = true;
+  return found;
+}
+
+function handleConsonantClick(consonant) {
+  if (roundOver || usedConsonants.has(consonant)) return;
+
+  usedConsonants.add(consonant);
+  document.getElementById(`btn-${consonant}`).className = 'consonant-btn used';
+
+  const wasComplete1 = players[1].complete;
+  const wasComplete2 = players[2].complete;
+
+  applyConsonantToPlayer(1, consonant);
+  applyConsonantToPlayer(2, consonant);
+
+  const newlyDone1 = !wasComplete1 && players[1].complete;
+  const newlyDone2 = !wasComplete2 && players[2].complete;
+
+  if (newlyDone1 || newlyDone2) {
+    roundOver = true;
+    if (newlyDone1 && newlyDone2) {
+      p1Score += 1; p2Score += 1;
+      document.getElementById('result1').textContent = '🤝 동시! +1점';
+      document.getElementById('result1').className = 'player-result tie';
+      document.getElementById('result2').textContent = '🤝 동시! +1점';
+      document.getElementById('result2').className = 'player-result tie';
+    } else if (newlyDone1) {
+      p1Score += 2;
+      document.getElementById('result1').textContent = '🎉 먼저 완성! +2점';
+      document.getElementById('result1').className = 'player-result win';
+    } else {
+      p2Score += 2;
+      document.getElementById('result2').textContent = '🎉 먼저 완성! +2점';
+      document.getElementById('result2').className = 'player-result win';
+    }
+    document.getElementById('panel1').classList.add('done');
+    document.getElementById('panel2').classList.add('done');
+    updateScoreDisplay();
+    showRoundControls();
+  } else {
+    currentTurn = currentTurn === 1 ? 2 : 1;
+  }
+
+  renderAll();
+
+  if (usedConsonants.size >= consonants.length && !roundOver) {
+    roundOver = true;
+    showRoundControls();
+    renderAll();
+  }
+}
+
+function showRoundControls() {
+  const controls = document.getElementById('controlSection');
+  controls.innerHTML = '';
+  if (!showedAnswer) {
+    const answerBtn = document.createElement('button');
+    answerBtn.className = 'action-btn secondary';
+    answerBtn.textContent = '정답 확인';
+    answerBtn.onclick = () => { showedAnswer = true; renderAll(); };
+    controls.appendChild(answerBtn);
+  }
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'action-btn';
+  nextBtn.textContent = currentRound >= totalRounds ? '결과 보기' : '다음 라운드 →';
+  nextBtn.onclick = nextRound;
+  controls.appendChild(nextBtn);
+}
+
+function nextRound() {
+  if (currentRound >= totalRounds) { showFinalScore(); return; }
+  currentRound++;
+  startRound();
+}
+
+function showFinalScore() {
+  const winner = p1Score > p2Score ? '1번 승리! 🏆' : p2Score > p1Score ? '2번 승리! 🏆' : '무승부! 🤝';
+  document.getElementById('finalArea').innerHTML =
+    `<div class="final-alert">🎊 게임 종료 🎊<br>${winner}<br>1번: ${p1Score}점 | 2번: ${p2Score}점</div>`;
+  document.getElementById('battleContainer').style.display = 'none';
+  document.getElementById('controlSection').innerHTML = `
+    <button class="action-btn" onclick="restartGame()">🔄 새 게임</button>
+    <button class="action-btn secondary" onclick="location.href='https://soosooland.com/doori/index.html'">🏠 다른 게임</button>`;
+}
+
+function restartGame() {
+  currentRound = 1;
+  p1Score = 0; p2Score = 0;
+  document.getElementById('battleContainer').style.display = 'flex';
+  startRound();
+}
+
+window.onload = async function () {
+  const ok = await loadWordpool();
+  if (ok) {
+    document.getElementById('categoryTitle').textContent = categoryTitle;
+    shuffleSentences();
+    startRound();
+  }
+};
+</script>
+</body>
+</html>
