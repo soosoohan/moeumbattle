@@ -37,8 +37,8 @@ This is a Korean language puzzle game where players guess the hidden consonants 
 - 같은 주제인데 힌트가 있는 것과 없는 것으로  두 가지 종류가 있는 것은 음식과 속담입니다.   
   The topics that have both hint and no-hint versions are Food and Proverbs.
 
-- 현재 일상 대화, 한국의 여행지, 대륙과 나라와 수도, 노래와 가수, 음식,속담과 격언, 초등학교 국사, 중학교 국사, 동물과 식물, 저자와 저서, 고유어, 영화와 드라마 제목  등 다양한 주제가 있습니다. 앞으로 세계사, 상식, 초등학교 교육과정 학년별로 넣는 등 계속 추가될 예정입니다.   
-  Current topics include: Daily Conversations, Korean Travel Destinations, Continents/Countries/Capitals, Songs and Singers, Food, Proverbs and Sayings, Elementary School Korean History, Middle School Korean History, Animals and Plants, Authors and Books, Pure Korean Words, Movie and Drama Titles, and more. Future additions will include World History, General Knowledge, and Elementary School Curriculum topics organized by grade level.
+- 현재 일상 대화, 한국의 여행지, 대륙과 나라와 수도, 노래와 가수, 음식,속담과 격언, 초등학교 국사, 중학교 국사, 동물과 식물, 저자와 저서, 고유어, 영화와 드라마 제목  등 다양한 주제가 있습니다. 
+  Current topics include: Daily Conversations, Korean Travel Destinations, Continents/Countries/Capitals, Songs and Singers, Food, Proverbs and Sayings, Elementary School Korean History, Middle School Korean History, Animals and Plants, Authors and Books, Pure Korean Words, Movie and Drama Titles, and more.  
 
 - 모든 자음을 다 찾을 때까지 계속되고, 다 찾으면 맞춘 자음 수에 따라 승패가 결정됩니다.  
   The game continues until all consonants are found, and when all are found, the winner is determined based on the number of consonants each player guessed correctly.  
