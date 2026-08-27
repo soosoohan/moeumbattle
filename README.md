@@ -25,22 +25,22 @@ This is a Korean language puzzle game where players guess the hidden consonants 
 - 실패하면 정답 문장이 공개됩니다.  
   If you fail, the correct sentence will be shown.
 
-- 모음퀴즈는 간단하게 설명하면 한글 행맨입니다.
+- 모음퀴즈는 간단하게 설명하면 한글 행맨입니다.  
   Moeum-quiz is essentially Korean Hangman.
 
-- 모음퀴즈에는 힌트가 있는 게임이 있고, 힌트가 없는 게임이 있습니다.
+- 모음퀴즈에는 힌트가 있는 게임이 있고, 힌트가 없는 게임이 있습니다.  
   Moeum-quiz has games with hints and games without hints.
 
-- 같은 주제일 때 힌트가 있으면  맞추기가 쉬워집니다.
+- 같은 주제일 때 힌트가 있으면  맞추기가 쉬워집니다.  
   When the topic is the same, having hints makes it easier to guess the answer.
 
-- 같은 주제인데 힌트가 있는 것과 없는 것으로  두 가지 종류가 있는 것은 음식과 속담입니다. 
+- 같은 주제인데 힌트가 있는 것과 없는 것으로  두 가지 종류가 있는 것은 음식과 속담입니다.   
   The topics that have both hint and no-hint versions are Food and Proverbs.
 
-- 현재 일상 대화, 한국의 여행지, 대륙과 나라와 수도, 노래와 가수, 음식,속담과 격언, 초등학교 국사, 중학교 국사, 동물과 식물, 저자와 저서, 고유어, 영화와 드라마 제목  등 다양한 주제가 있습니다. 앞으로 세계사, 상식, 초등학교 교육과정 학년별로 넣는 등 계속 추가될 예정입니다. 
+- 현재 일상 대화, 한국의 여행지, 대륙과 나라와 수도, 노래와 가수, 음식,속담과 격언, 초등학교 국사, 중학교 국사, 동물과 식물, 저자와 저서, 고유어, 영화와 드라마 제목  등 다양한 주제가 있습니다. 앞으로 세계사, 상식, 초등학교 교육과정 학년별로 넣는 등 계속 추가될 예정입니다.   
   Current topics include: Daily Conversations, Korean Travel Destinations, Continents/Countries/Capitals, Songs and Singers, Food, Proverbs and Sayings, Elementary School Korean History, Middle School Korean History, Animals and Plants, Authors and Books, Pure Korean Words, Movie and Drama Titles, and more. Future additions will include World History, General Knowledge, and Elementary School Curriculum topics organized by grade level.
 
-- 모든 자음을 다 찾을 때까지 계속되고, 다 찾으면 맞춘 자음 수에 따라 승패가 결정됩니다.
+- 모든 자음을 다 찾을 때까지 계속되고, 다 찾으면 맞춘 자음 수에 따라 승패가 결정됩니다.  
   The game continues until all consonants are found, and when all are found, the winner is determined based on the number of consonants each player guessed correctly.  
 
 - 하루모음은 하루 1문제씩 매일 새로운 문제가 출제됩니다.  
@@ -155,7 +155,7 @@ This project is registered with the Korea Copyright Commission.
 
 ---
 
-## 🎮  모음퀴즈 주소 : https://soosooland.com/moeum-quiz/
+## 🎮  모음 겨루기 주소 : https://soosooland.com/moeumbattle/
 
 ## 🌟 Soosooland - Puzzle Game Hub by Han Soosoo
 
