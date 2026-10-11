@@ -46,15 +46,13 @@ This is a Korean language puzzle game where players guess the hidden consonants 
 - 하루모음은 하루 1문제씩 매일 새로운 문제가 출제됩니다.  
 - One new question is presented each day in Haroo Moeum.  
   
-## 둘이 모음 (Doori Moeum)
+## 둘이 모음 (Moeum Duel)
 
 - 두 사용자가 대결하는 모음퀴즈로, 각 팀은 서로 다른 자기만의 문제 세트를 풉니다.   
 - 라운드마다 한 팀만 문제를 풀고, 다른 팀은 대기합니다. 대기 팀은 지루하지 않도록 자기 팀이 다음 라운드에 풀 문제를 미리 보면서 기다립니다.  
 - 풀이 순서는 라운드마다 교대됩니다. (1라운드: 1팀 풀이 / 2라운드: 2팀 풀이 / …)  
 - 문제마다 10점 만점에서 시작해서, 틀린 자음을 클릭할 때마다 1점씩 삭감됩니다.  
 - 10라운드가 끝나면 각 팀의 점수를 합산해 총점이 높은 팀(실수가 적은 팀)이 승리합니다.  
-
-## Doori Moeum
 
 - A two-player Moeum quiz battle where each team solves its own separate set of questions.  
 - Each round, only one team solves while the other waits. To keep the waiting team from getting bored, they get to preview the question their team will solve in the next round.  
@@ -69,8 +67,6 @@ This is a Korean language puzzle game where players guess the hidden consonants 
 - 정답을 먼저 완성하면 2점, 동시에 완성하면 1점씩 받습니다.  
 - 10라운드 후 점수를 비교해 승패 또는 무승부가 결정됩니다.  
 - 내 문제와 상대방의 문제를 동시에 추리하면서, 내 문제에 있을 것 같은 자음을 클릭하도록 노력하세요.  
-
-## Moeum Battle
 
 - A two-player Moeum quiz battle where players take turns revealing consonants that appear in each other's separate word.  
 - Whenever a consonant is clicked, it's revealed simultaneously in both players' words if present.  
@@ -87,8 +83,6 @@ This is a Korean language puzzle game where players guess the hidden consonants 
 - 첫 학습에서 틀린 문제는 그 자리에서 바로 다시 풀어 정답을 확인합니다. (당일 학습 완료)  
 - 이렇게 한 번이라도 틀렸던 문제만 복습 일정에 등록되어, 위 4단계 복습을 거칩니다.  
 - 날짜를 지켜서 반복하면 오래 기억됩니다.  
-
-## Moeum Dictionary (Moeum Dict) / Moeum School  
 
 - Both Moeum Dictionary and Moeum School are study quizzes built from vocabulary extracted from Korean elementary school textbooks.  
 - In Moeum Dictionary, you see a word and guess its meaning. In Moeum School, you see a hint and guess the word.  
