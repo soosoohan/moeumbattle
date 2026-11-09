@@ -334,6 +334,17 @@ The winner — or a tie — is decided after 10 rounds.
 </footer>
 
 <script>
+const TAB_NAMES = ['culture','nature','study','dict','school'];
+
+function showTab(name){
+  document.querySelectorAll('.game-buttons').forEach(e => e.classList.remove('show'));
+  document.getElementById('tab-' + name).classList.add('show');
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    t.classList.toggle('active', TAB_NAMES[i] === name);
+  });
+}
+
+showTab('culture'); // 처음에 보일 탭
 function toggleLanguage(lang) {
         const koreanDesc = document.getElementById('korean-description');
         const englishDesc = document.getElementById('english-description');
