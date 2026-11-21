@@ -116,7 +116,8 @@
 
   h1 { font-size: clamp(1.3rem, 3.7vw, 1.9rem); margin-top:20px; margin-bottom:20px;color: #f0e3b4; }
 .banner-title {
-    margin: 60px 0 0;   /* 위쪽 여백 */
+    margin-top: 60px; 
+    margin-bottom: 20px;   
     font-size: 0;
 }
 
@@ -135,6 +136,7 @@
       width: 90%;
       max-width:800px;      
       margin: auto;
+      margin-top: 20px;
       margin-buttom: 20px;
       padding: 20px;
       border-radius: 0;
@@ -240,9 +242,10 @@ margin-top: 30px;
                 <button class="language-button active" onclick="toggleLanguage('ko')">한</button>
                 <button class="language-button" onclick="toggleLanguage('en')">EN</button>
             </div>
-        <div class="moeum-main" id="moeum-main">
-<div id="korean-description">
-            <h1 class="chalk-text main-title">모음 겨루기</h1>
+        <div class="moeum-main" id="moeum-main"> 
+<h1 class="banner-title"><img src="https://soosooland.com/moeumbattle/banner.jpeg" alt="Moeum Battle 모음 겨루기"></h1>
+         
+          <div id="korean-description">
   <h2>자음을 추리해서 단어, 구절, 문장을 완성하는 게임이에요.</h2>
 <p style="color: #a7fff0;">게임 방법<br>
 
@@ -259,7 +262,6 @@ margin-top: 30px;
 </div>
 
 <div id="english-description" class="hidden">
-            <h1 class="chalk-text main-title">Moeum Battle</h1>
   <h2>Korean Hangman</h2>  
 <p style="color: #a7fff0;">How to Play<br>
 All vowels of the answer are revealed when the game starts.<br>
