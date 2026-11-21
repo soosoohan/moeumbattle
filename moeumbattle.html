@@ -193,7 +193,7 @@ footer { text-align:center; color:#c3dbdb; font-size:.8rem; margin-top:30px; }
 </div>
 
 <div class="consonant-section">
-  <div class="consonant-title">자음을 클릭하세요 (교대로 진행)</div>
+  <div class="consonant-title">자음을 클릭하세요</div>
   <div class="consonant-grid" id="consonantGrid"></div>
 </div>
 
@@ -512,7 +512,7 @@ function showFinalScore() {
   document.getElementById('battleContainer').style.display = 'none';
   document.getElementById('controlSection').innerHTML = `
     <button class="action-btn" onclick="restartGame()">🔄 새 게임</button>
-    <button class="action-btn secondary" onclick="location.href='https://soosooland.com/doori/index.html'">🏠 다른 게임</button>`;
+    <button class="action-btn secondary" onclick="location.href='index.html'">🏠 다른 게임</button>`;
 
   // 추가: 자음 구역 숨기고 이미지 보이기
   const cons = document.querySelector('.consonant-section');
@@ -524,7 +524,7 @@ function showFinalScore() {
 function restartGame() {
   currentRound = 1;
   p1Score = 0; p2Score = 0;
-  document.getElementById('finalArea').innerHTML = '';   // 추가: 엔딩 메시지 지우기
+  document.getElementById('finalArea').innerHTML = '';   
   document.getElementById('battleContainer').style.display = 'flex';
 
   // 추가: 자음 구역 다시 보이고 이미지 숨기기
