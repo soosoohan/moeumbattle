@@ -115,7 +115,19 @@
     .back-button:active {transform: scale(0.92);transition: transform 0.1s;}
 
   h1 { font-size: clamp(1.3rem, 3.7vw, 1.9rem); margin-top:20px; margin-bottom:20px;color: #f0e3b4; }
-  h2 { font-size: clamp(1.1rem, 3.1vw, 1.5rem); color: white; text-align: center; margin-bottom:20px;}
+ .main-title {
+    margin: 0;
+    font-size: 0;       /* 혹시 남는 글자 간격 제거 */
+}
+
+.main-title img {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: 0 auto;
+}
+ h2 { font-size: clamp(1.1rem, 3.1vw, 1.5rem); color: white; text-align: center; margin-bottom:20px;}
 
     .game_container {
       background-color: #0E756D;
